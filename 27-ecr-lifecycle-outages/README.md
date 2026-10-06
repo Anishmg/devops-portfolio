@@ -8,9 +8,9 @@ Two production services went down on separate days with the same symptom:
 ## Investigation
 
 CloudTrail showed a **lifecycle policy** had been added to the container
-repositories with the tag prefix `app-` and the rule "keep only the 3 newest images".
-That prefix matches **both** production images (`app-{sha}`) and development images
-(`app-dev-{sha}`).
+repositories with the tag prefix `rel-` and the rule "keep only the 3 newest images".
+That prefix matches **both** production images (`rel-{sha}`) and development images
+(`rel-dev-{sha}`).
 
 When three development images were pushed, the policy counted them against the same
 limit of three — and expired the **production** images to make room. The services
