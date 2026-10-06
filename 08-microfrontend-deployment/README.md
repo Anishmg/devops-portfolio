@@ -3,7 +3,7 @@
 ## Problem
 
 The platform's UI is a **micro-frontend (MFE) architecture**: ~30+ independently
-built Next.js apps (one per feature area — PMS, purchase, crew, voyage, etc.) plus a
+built Next.js apps (one per feature area — maintenance, procurement, crew, voyage, etc.) plus a
 shell app that stitches them together. All of them deploy to EKS across the same
 multiple client environments as the backend.
 
@@ -33,9 +33,9 @@ pipeline needed to build only what actually changed.
 ## Approach — Helm chart + change-aware pipeline
 
 - **One Helm chart (`mfe-eks`) for all MFEs**, with a `values-<client>.yaml` per
-  environment (app, sandbox, and per-client environments). The chart templates
+  environment (prod, QA, and per-client environments). The chart templates
   the deployments, services, ingress, and namespace for every MFE from those values,
-  so hostnames like `pms.microapps.<client-domain>` are generated consistently.
+  so hostnames like `maintenance.apps.<client-domain>` are generated consistently.
 - **Change detection in CI.** The GitHub Actions workflow diffs the commit and
   builds only the MFEs whose directories changed (with a manual override to force a
   specific list or deploy-all). Helm-chart changes are detected separately so a

@@ -62,7 +62,7 @@ values — no credentials, internal hostnames, or client data.
 - **Kubernetes platform:** EKS, Helm, Kustomize, Karpenter, ArgoCD, Kyverno, Velero, KEDA
 - **Observability:** Prometheus, Grafana, Loki, Uptime Kuma, Langfuse
 - **IaC:** Terraform, Terragrunt
-- **CI/CD:** GitHub Actions (OIDC), Jenkins
+- **CI/CD:** GitHub Actions (OIDC)
 - **Databases:** MongoDB, PostgreSQL, ClickHouse, Redis
 - **Practices:** Site Reliability Engineering, FinOps, IAM security governance, GitOps
 

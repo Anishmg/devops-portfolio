@@ -14,14 +14,14 @@ enforced guardrails that make dangerous actions *impossible*, not just discourag
 
 ## What I built
 
-I designed and deployed a Kyverno `ClusterPolicy` (`prod-protect-namespaced-resources`)
+I designed and deployed a Kyverno `ClusterPolicy` (`protect-critical-resources`)
 running in **Enforce** mode, with three rules working at the Kubernetes admission
 layer:
 
 1. **Block deletion of namespaced resources** — denies `DELETE` on Deployments,
    Services, Ingresses, PersistentVolumeClaims, Secrets, ConfigMaps, and CronJobs
-   across **24 protected namespaces** (app, app-microapps, airflow, karpenter, keda,
-   the pms/prodigy service namespaces, velero, the monitoring namespace, and more).
+   across **21 protected namespaces** (the core application, micro-frontend, workflow-engine,
+   autoscaling, backup and monitoring namespaces, the per-service namespaces, and more).
 2. **Block namespace deletion** — denies `DELETE` on the protected namespaces
    themselves, so an entire namespace can't be dropped.
 3. **Block PersistentVolume deletion** — denies `DELETE` on PVs cluster-wide, so the
@@ -45,7 +45,7 @@ policy carves out precise exceptions:
 - **`github-actions`** — so the CI/CD deployment pipelines can still roll out
   changes.
 - **Helm release secrets (`sh.helm.release.*`)** — so Helm upgrades aren't blocked.
-- **`pod-status-checker`** — a platform service that manages its own resources.
+- **An internal platform service account** — a platform service that manages its own resources.
 
 Getting these exclusions right is the actual engineering: the guardrail has to stop
 *accidents* without breaking *legitimate automation*.

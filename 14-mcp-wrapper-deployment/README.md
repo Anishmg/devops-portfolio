@@ -5,7 +5,7 @@
 The platform runs an **MCP (Model Context Protocol) wrapper** — a service that
 aggregates many upstream MCP servers behind a single endpoint for the AI system to
 consume. It has to run as separate instances per client environment
-(production, dev, sandbox, and per-client), each needing a large set of credentials
+(production, dev, QA, and per-client), each needing a large set of credentials
 and upstream configuration to come up correctly.
 
 > The MCP wrapper application is built by the Data Science / development team. My
@@ -20,7 +20,7 @@ secret per environment, synced into the corresponding Kubernetes secret that the
 deployment consumes — so:
 
 - No credentials live in the repo or in manifests.
-- Each environment (app, app-dev, sandbox, client-a, client-b) has its own isolated secret.
+- Each environment (prod, dev, qa, client-a, client-b) has its own isolated secret.
 - Rotating or adding a key is a Secrets Manager update plus a rollout, not a code
   change.
 

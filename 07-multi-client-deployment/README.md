@@ -2,10 +2,10 @@
 
 ## Problem
 
-The platform's backend is a set of core services — auth, core API, API gateway,
-analytics, tracker, application service, dashboard, and a Kong gateway. These have
+The platform's backend is a set of core services — auth, core service, API gateway,
+reporting, tracking, a workflow service, a web frontend, and an edge gateway. These have
 to be deployed for **multiple clients** (production, plus separate isolated client,
-sandbox, and dev environments), each with its own namespace, hostnames, resource
+QA, and dev environments), each with its own namespace, hostnames, resource
 sizing, database endpoints, and configuration.
 
 Copy-pasting a full set of manifests per client would be unmaintainable and would
@@ -20,14 +20,14 @@ service) with a thin **overlay per client** that patches only what differs:
 ```
 k8s/
   base/
-    auth/  coreapi/  apigateway/  analytics/  tracker/
-    application/  webapp-v1/  kong-gateway/  ...
+    auth/  core-service/  api-gateway/  reporting/  tracking/
+    workflow-service/  web-frontend/  edge-gateway/  ...
   overlays/
-    app/        (production)
+    prod/       (production)
     client-a/   (client)
     client-b/   (client)
-    sandbox/
-    app-dev/
+    qa/
+    dev/
       <service>/
         namespace.yaml
         deployment-patch.yaml   # image, resources, replicas
@@ -47,7 +47,7 @@ Deployment runs through GitHub Actions with a **reusable workflow template**
 (`_deploy-template.yml`) that each service's workflow calls. That means all ~9
 services deploy through the same audited, parameterized path rather than nine
 divergent scripts. Auth to AWS/EKS is via OIDC (no static keys), and rollouts can
-be done **per client**, so a change can be validated on sandbox or one client
+be done **per client**, so a change can be validated on QA or one client
 before it reaches production.
 
 ## Handling secrets correctly
