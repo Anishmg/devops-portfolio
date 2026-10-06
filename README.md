@@ -24,6 +24,9 @@ values — no credentials, internal hostnames, or client data.
 | 19 | [Kyverno Policy-as-Code](./19-kyverno-policy) | Admission-control guardrails across 21 namespaces |
 | 18 | [Velero Backup & DR](./18-velero-backup) | Automated PVC snapshots with auto-labeling |
 | 21 | [Uptime Kuma](./21-uptime-kuma) | External/synthetic uptime monitoring + alerting |
+| 22 | [Bedrock AgentCore Platform](./22-bedrock-agentcore-platform) | Managed AI runtime across isolated environments, least-privilege IAM, CI/CD with a security gate |
+| 23 | [Terragrunt AgentCore Module](./23-agentcore-terragrunt-module) | A 16-resource environment from one line; a tested destroy path |
+| 25 | [Typesense Vector Search](./25-typesense-vector-search) | 900k-document migration, 60 to 21 GB, zero downtime |
 
 ### Reliability & Cost (SRE / FinOps)
 | # | Project | What it demonstrates |
@@ -33,6 +36,10 @@ values — no credentials, internal hostnames, or client data.
 | 05 | [Langfuse Platform](./05-langfuse-platform) | Full LLM-observability stack: setup, migration, operation |
 | 15 | [Bedrock Cost Attribution](./15-bedrock-cost-attribution) | Per-user LLM cost tracking via CUR 2.0 |
 | 16 | [Disaster Recovery](./16-disaster-recovery-pvc) | Restoring 53 deleted user volumes from snapshots |
+| 26 | [SonarQube Outage](./26-sonarqube-outage-restoration) | Diagnosing a 14-day silent failure across DNS, load balancing and policy |
+| 27 | [ECR Lifecycle Outages](./27-ecr-lifecycle-outages) | Tracing three production outages to registry clean-up rules |
+| 28 | [Karpenter Consolidation Downtime](./28-karpenter-consolidation-downtime) | PodDisruptionBudgets, replica and HPA floors, node pinning |
+| 32 | [Orphaned Resource Cleanup](./32-orphaned-resource-cleanup) | Evidence-based deletion of 40 resources, and what must stay |
 
 ### Data & Backups
 | # | Project | What it demonstrates |
@@ -55,6 +62,10 @@ values — no credentials, internal hostnames, or client data.
 | 09 | [Self-Service IP Whitelisting](./09-self-service-ip-whitelist) | GitHub Actions automation with SG-overflow handling |
 | 10 | [CloudFront + S3 Security](./10-cloudfront-s3-security) | OAC hardening of public buckets behind a CDN |
 | 11 | [Per-User Container Service](./11-per-user-container-service) | FastAPI service provisioning K8s pods per user |
+| 24 | [Supply-Chain Security](./24-supply-chain-security) | Reusable scanners across 276 repositories, handling history and false positives |
+| 29 | [CloudFront + Serverless Patterns](./29-cloudfront-serverless-patterns) | Four traps in CloudFront in front of serverless apps, and their fixes |
+| 30 | [Secrets Manager, CSI Driver and IRSA](./30-secrets-manager-csi-irsa) | Moving hard-coded credentials out of manifests |
+| 31 | [GitHub Org Governance](./31-github-org-governance) | Enforced 2FA, a repeatable access audit, offboarding, a hardened intern org |
 
 ## Core skills across this work
 
